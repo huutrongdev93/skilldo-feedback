@@ -49,12 +49,13 @@ class AdminFeedback {
         }
     }
     static function formInput($form) {
+        $info = $form->lang->group('info');
         foreach (Language::listKey() as $key) {
-            $form['field'][$key.'_content']['type'] = 'text';
-            $form['field'][$key.'_content']['label'] = 'Chức vụ';
+            $info->field[$key.'_content']['type'] = 'text';
+            $info->field[$key.'_content']['label'] = 'Chức vụ';
         }
-        $form = form_remove_group('seo,theme', $form);
-        $form = form_rename_field(array('title' => 'Họ và Tên', 'excerpt' => 'Bình Luận'),$form);
+        $form->removeGroup(['seo', 'theme']);
+        $info->renameField(['title' => 'Họ và Tên', 'excerpt' => 'Bình Luận']);
         return $form;
     }
     static function formSave($ins_data) {
