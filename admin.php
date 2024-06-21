@@ -26,27 +26,25 @@ class AdminFeedback {
         ]);
     }
     static function tableHeader($columns): array {
-        $columnsnew['cb']   	= 'cb';
-        $columnsnew['thumb'] 	= 'Ảnh đại diện';
-        $columnsnew['title'] 	= 'Họ và Tên';
-        $columnsnew['content'] 	= 'Chức vụ';
-        $columnsnew['excerpt'] 	= 'Feedback';
-        $columnsnew['action'] 	= 'Hành động';
-        $columns = $columnsnew;
-        return $columns;
-    }
-    static function columnData( $column_name, $item ): void {
-        switch ($column_name) {
-            case 'thumb':
-                echo Template::img($item->image, $item->title, array('style'=>'width:50px;'));
-                break;
-            case 'excerpt':
-                echo $item->excerpt;
-                break;
-            case 'content':
-                echo $item->content;
-                break;
-        }
+        $columnsNew['cb']   	= 'cb';
+        $columnsNew['thumb'] 	= [
+            'label' => 'Ảnh đại diện',
+            'column' => fn($item, $args) => \SkillDo\Table\Columns\ColumnImage::make('image', $item, $args)->size(50)->circular()
+        ];
+        $columnsNew['title'] 	= [
+            'label' => 'Họ và tên',
+            'column' => fn($item, $args) => \SkillDo\Table\Columns\ColumnText::make('title', $item, $args)
+        ];
+        $columnsNew['content'] 	= [
+            'label' => 'Chức vụ',
+            'column' => fn($item, $args) => \SkillDo\Table\Columns\ColumnText::make('content', $item, $args)
+        ];
+        $columnsNew['excerpt'] 	= [
+            'label' => 'Feedback',
+            'column' => fn($item, $args) => \SkillDo\Table\Columns\ColumnText::make('excerpt', $item, $args)
+        ];
+        $columnsNew['action'] 	= 'Hành động';
+        return $columnsNew;
     }
     static function formInput($form) {
         $info = $form->lang->group('info');
@@ -67,6 +65,5 @@ class AdminFeedback {
 }
 add_action('init', 'AdminFeedback::navigation');
 add_filter('manage_post_'.FEEDBACK_POST_TYPE.'_columns', 'AdminFeedback::tableHeader');
-add_action('manage_post_'.FEEDBACK_POST_TYPE.'_custom_column', 'AdminFeedback::columnData',10,2);
 add_filter('manage_post_'.FEEDBACK_POST_TYPE.'_input', 'AdminFeedback::formInput');
 add_filter('save_object_before', 'AdminFeedback::formSave');

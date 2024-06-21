@@ -12,10 +12,10 @@ class RoleFeedback {
         return array_merge($label, RoleFeedback::capabilities());
     }
     static function capabilities() {
-        $label['view_posts_customer']         = 'Xem danh sách ý kiến';
-        $label['add_posts_customer']          = 'Thêm ý kiến';
-        $label['edit_posts_customer']         = 'Sửa ý kiến';
-        $label['delete_posts_customer']       = 'Xóa ý kiến';
+        $label['view_posts_customer']         = 'Xem danh sách';
+        $label['add_posts_customer']          = 'Thêm';
+        $label['edit_posts_customer']         = 'Sửa';
+        $label['delete_posts_customer']       = 'Xóa';
         return apply_filters('customer_feedback_capabilities', $label );
     }
 }
