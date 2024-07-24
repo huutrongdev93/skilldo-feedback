@@ -1,12 +1,4 @@
 <?php
-/**
-Plugin name     : Feedback
-Plugin class    : Feedback
-Plugin uri      : http://sikido.vn
-Description     : Tạo và quản lý ý kiến, nhận xét của khách hàng
-Author          : SKDSoftware Dev Team
-Version         : 2.1.0
-*/
 const FEEDBACK_POST_TYPE = 'feedback';
 
 class Feedback {
