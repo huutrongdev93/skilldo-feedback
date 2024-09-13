@@ -22,7 +22,7 @@ class AdminFeedback {
     static function navigation(): void {
         AdminMenu::add(FEEDBACK_POST_TYPE, 'Feedback', 'post?post_type='.FEEDBACK_POST_TYPE, [
             'position' => 'post',
-            'icon' => '<img src="'.Path::plugin('feedback').'/icon-customer.png" />'
+            'icon' => '<img src="'.Path::plugin('feedback').'/assets/icon-customer.png" />'
         ]);
     }
     static function tableHeader($columns): array {

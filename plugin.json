@@ -4,5 +4,6 @@
     "url":"https://sikido.vn",
     "description":"Tạo và quản lý ý kiến, nhận xét của khách hàng",
     "author":"SKDSoftware Dev Team",
-    "version":"2.1.0"
+    "version":"2.1.1",
+    "thumb": "assets/thumb.png"
 }
